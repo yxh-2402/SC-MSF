@@ -35,11 +35,7 @@ the remaining dependencies with:
 python -m pip install -r requirements.txt
 ```
 
-Run the lightweight tests:
 
-```bash
-python -m unittest discover -s tests -v
-```
 
 ## Data
 
