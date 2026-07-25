@@ -1,0 +1,14 @@
+# Install a PyTorch build compatible with your CUDA driver when GPU training is required.
+torch>=2.0
+torchvision>=0.15
+
+dill>=0.3.7,<1
+matplotlib>=3.7,<4
+numpy>=1.24,<3
+opencv-python>=4.8,<5
+Pillow>=9.5,<12
+scikit-learn>=1.2,<2
+scipy>=1.10,<2
+seaborn>=0.12,<1
+tqdm>=4.65,<5
+yacs>=0.1.8,<1
