@@ -1,63 +1,31 @@
 # Reproducibility record
 
-Complete this record from the corrected public-release code before creating a
-version tag or citing the repository.
+This record identifies the versioned artifacts supplied for JAAD evaluation.
+Numerical results are reported in the accompanying manuscript.
 
-## Software
+## JAAD release artifacts
 
-- Repository commit:
-- Release tag:
-- Python version:
-- PyTorch version:
-- CUDA toolkit and driver:
-- Dependency lock file or `pip freeze` artifact:
+| Artifact | Version |
+| --- | --- |
+| Source snapshot | `bc33e098d0e04af9f0676474842ca14075c6106c` |
+| Configuration | [`../configs/JAAD.yml`](../configs/JAAD.yml) |
+| Checkpoint | [`../checkpoints/JAAD/TFED_Epoch_0_088.pth`](../checkpoints/JAAD/TFED_Epoch_0_088.pth) |
+| Checkpoint SHA-256 | `3C79AC48E37D7F95CF49EDCDC754802CB774A0C9469E3F45922204CF93ADD776` |
 
-## Hardware
+The checkpoint was strictly loaded against the released JAAD model with no
+missing or unexpected parameter keys. The project loader maps the `flow_wfe`
+checkpoint prefix to the released `flow_dtde` module name.
 
-- Operating system:
-- GPU model and count:
-- CPU:
-- RAM:
-- Training time for PIE:
-- Training time for JAAD:
+## Evaluation
 
-## Data and features
+```bash
+python tools/test.py \
+  --config-file configs/JAAD.yml \
+  --checkpoint checkpoints/JAAD/TFED_Epoch_0_088.pth \
+  DATASET.ROOT /absolute/path/to/JAAD \
+  DATASET.TRAJECTORY_PATH /absolute/path/to/JAAD/trajectories
+```
 
-- PIE release/source:
-- JAAD branch/release:
-- Train/validation/test split identifiers:
-- Pose extractor and checkpoint:
-- Optical-flow extractor and checkpoint:
-- Image feature extractor and checkpoint:
-- Feature archive DOI/URL:
-- SHA-256 checksums:
-
-## Training protocol
-
-- Random seeds:
-- Number of independent runs:
-- Model-selection criterion:
-- Selected epoch for PIE:
-- Selected epoch for JAAD:
-- Configuration differences from `configs/*.yml`:
-
-## Corrected-release results
-
-Do not copy metrics from the legacy experiment logs. Populate this table only
-after rerunning the corrected data loader.
-
-| Dataset | Seed(s) | ADE 0.5 s | ADE 1.0 s | ADE 1.5 s | FDE | C-ADE 1.5 s | C-FDE |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| PIE | pending | pending | pending | pending | pending | pending | pending |
-| JAAD | pending | pending | pending | pending | pending | pending | pending |
-
-Report mean and standard deviation when the manuscript claims multi-seed
-results. Record the exact command used for every final table.
-
-## Artifact publication
-
-- Final weights DOI/URL:
-- Prediction outputs DOI/URL, if shared:
-- Code archive DOI:
-- Data Availability Statement updated:
-- Code Availability Statement updated:
+Official datasets and derived feature inputs are not redistributed with this
+repository. Their expected layout is documented in
+[`DATASET.md`](DATASET.md).

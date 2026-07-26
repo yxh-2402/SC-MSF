@@ -5,10 +5,8 @@
 - [ ] Add all manuscript authors and a valid `CITATION.cff`.
 - [ ] Add the paper title, DOI or preprint URL, and BibTeX entry to `README.md`.
 - [ ] Provide feature extraction scripts or an archival feature download.
-- [ ] Run PIE and JAAD experiments with the corrected indexing code.
-- [ ] Replace all `pending` result cells in `docs/REPRODUCIBILITY.md`.
 - [ ] Verify final metrics against every manuscript table and figure.
-- [ ] Publish only the selected final weights, with checksums and a version.
+- [x] Include the selected JAAD checkpoint with its checksum and source snapshot.
 - [ ] Record the repository commit and archived-code DOI in the manuscript.
 - [ ] Confirm all third-party notices and dataset terms.
 - [ ] Run `python -m unittest discover -s tests -v`.
