@@ -87,7 +87,7 @@ Pass `--save-predictions` when the full output is required.
 
 The JAAD source snapshot, evaluation configuration, checkpoint, and checksum
 are listed above. The checkpoint is included in this repository and is loaded
-by `tools/test.py`; the loader also maps its legacy `flow_wfe` parameter prefix
+by `tools/test.py`; the loader also maps its `flow_wfe` checkpoint prefix
 to the released `flow_dtde` module name. Dataset preparation and feature
 requirements are documented in [`docs/DATASET.md`](docs/DATASET.md).
 

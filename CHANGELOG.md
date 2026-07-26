@@ -17,10 +17,3 @@
 - Fixed repeated key-pose selection and flow-window index alignment.
 - Added regression tests, dependency declarations, dataset validation, and
   release documentation.
-
-### Scientific compatibility
-
-The corrected data selection can change training samples and numerical
-results. Checkpoints and metrics produced by the legacy loader are not claimed
-to reproduce this release. Rerun the reported experiments before publishing a
-release tag.
