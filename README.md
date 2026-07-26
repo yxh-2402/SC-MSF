@@ -4,20 +4,18 @@ Research code for multimodal pedestrian bounding-box trajectory prediction on
 the PIE and JAAD benchmarks. This repository is a cleaned public-release copy
 of the experiment code used during manuscript development.
 
-## Important release note
+## JAAD reproducibility snapshot
 
-The public-release cleanup corrected two indexing defects in the legacy data
-loader:
+The released JAAD checkpoint corresponds to the following versioned artifacts:
 
-1. a flow-frame index overwrote the dataset sample index and could mix fields
-   from different samples;
-2. the key-pose index list was reset repeatedly, which duplicated selected
-   pose frames.
+| Artifact | Version |
+| --- | --- |
+| Source snapshot | `bc33e098d0e04af9f0676474842ca14075c6106c` |
+| Configuration | [`configs/JAAD.yml`](configs/JAAD.yml) |
+| Checkpoint | [`checkpoints/JAAD/TFED_Epoch_0_088.pth`](checkpoints/JAAD/TFED_Epoch_0_088.pth) |
+| Checkpoint SHA-256 | `3C79AC48E37D7F95CF49EDCDC754802CB774A0C9469E3F45922204CF93ADD776` |
 
-The corrected logic is isolated in `dataset/selection.py` and covered by unit
-tests. Results produced with the legacy loader must be rerun and must not be
-presented as results from this corrected release. See
-[`CHANGELOG.md`](CHANGELOG.md).
+Use these three artifacts together when evaluating the released JAAD model.
 
 ## Installation
 
@@ -77,7 +75,7 @@ Training keeps only `best.pth` and `last.pth` by default. Use
 ```bash
 python tools/test.py \
   --config-file configs/JAAD.yml \
-  --checkpoint checkpoints/JAAD/seed_0/best.pth \
+  --checkpoint checkpoints/JAAD/TFED_Epoch_0_088.pth \
   DATASET.ROOT /absolute/path/to/JAAD \
   DATASET.TRAJECTORY_PATH /absolute/path/to/JAAD/trajectories
 ```
@@ -87,15 +85,11 @@ Pass `--save-predictions` when the full output is required.
 
 ## Reproducibility
 
-The exact paper results, hardware details, final checkpoint links, feature
-extractor versions, and artifact checksums must be added after rerunning the
-corrected release. The required record is listed in
-[`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
-
-Model weights and generated predictions are intentionally ignored by Git.
-Publish final weights through a versioned GitHub Release or an archival
-repository such as Zenodo, and record a persistent identifier in the
-manuscript.
+The JAAD source snapshot, evaluation configuration, checkpoint, and checksum
+are listed above. The checkpoint is included in this repository and is loaded
+by `tools/test.py`; the loader also maps its legacy `flow_wfe` parameter prefix
+to the released `flow_dtde` module name. Dataset preparation and feature
+requirements are documented in [`docs/DATASET.md`](docs/DATASET.md).
 
 ## Repository layout
 
